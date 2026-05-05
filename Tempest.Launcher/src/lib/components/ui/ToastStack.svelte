@@ -32,7 +32,7 @@
 				</div>
 				{#if toast.dismissible !== false}
 					<button class="btn btn-ghost btn-xs" onclick={() => removeToast(toast.id)}>
-						Dismiss
+						Descartar
 					</button>
 				{/if}
 			</div>

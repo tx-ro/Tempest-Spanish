@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>Character Selection</title>
+	<title>Selección de Personaje</title>
 </svelte:head>
 
 <div class="h-screen">

@@ -30,7 +30,7 @@
 		const selected = await open({
 			directory: true,
 			multiple: false,
-			title: "Select Default Instance Path",
+			title: "Seleccionar Directorio Por Defecto de Instancias",
 		});
 
 		if (selected) {
@@ -53,7 +53,7 @@
 
 <div class="flex flex-col h-full bg-base-100">
 	<Header
-		title="Settings"
+		title="Configuración"
 		tabs={[
 			{ name: "General", value: "general" },
 			{ name: "Advanced", value: "advanced" },
@@ -65,7 +65,7 @@
 			<Settings size={32} class="opacity-60" />
 		{/snippet}
 		{#snippet subtitle()}
-			<span>Configure your launcher preferences</span>
+			<span>Configura tus preferencias de lanzamiento del launcher</span>
 		{/snippet}
 	</Header>
 
@@ -76,20 +76,20 @@
 					<div class="flex flex-col gap-4">
 						<div class="form-control">
 							<label for="username-input" class="label py-0.5">
-								<span class="label-text text-sm">Username</span>
+								<span class="label-text text-sm">Nombre</span>
 							</label>
 							<input
 								id="username-input"
 								type="text"
 								class="input input-bordered w-full"
 								bind:value={localUsername}
-								placeholder="Enter your username"
+								placeholder="Ingresa tu nombre de usuario"
 							/>
 						</div>
 
 						<div class="form-control">
 							<label for="path-input" class="label py-0.5">
-								<span class="label-text text-sm">Default Instance Path</span>
+								<span class="label-text text-sm">Directorio Por Defecto de Instancias</span>
 							</label>
 							<div class="join w-full">
 								<input
@@ -97,7 +97,7 @@
 									type="text"
 									class="input input-bordered join-item flex-1 font-mono"
 									bind:value={localPath}
-									placeholder="Select a directory..."
+									placeholder="Seleccionar directorio..."
 								/>
 								<button class="btn btn-accent join-item" onclick={browsePath}
 									>Browse</button
@@ -107,21 +107,21 @@
 
 						<div class="flex justify-end gap-2 pt-2">
 							<button class="btn btn-accent" onclick={saveSettings}
-								>Save Changes</button
+								>Guardar Cambios</button
 							>
 						</div>
 					</div>
 				{:else if activeTab === "advanced"}
 					<div class="flex flex-col">
 						<div class="flex flex-col gap-4">
-							<h2 class="text-xl font-semibold text-error">Danger Zone</h2>
+							<h2 class="text-xl font-semibold text-error">Zona Peligrosa</h2>
 							<p class="text-sm">
-								Resetting will clear all your settings and return everything to
-								default values. This action cannot be undone.
+								Reestablecer va a borrar todos tus ajustes y devolverá todo a los
+								valores por defecto. Esto no podrá ser revertido.
 							</p>
 							<div>
 								<button class="btn btn-error" onclick={resetAll}
-									>Clear All Settings</button
+									>Reestablecer las configuraciones</button
 								>
 							</div>
 						</div>
@@ -132,15 +132,15 @@
 							<h2 class="text-xl font-semibold">About</h2>
 							<div class="flex flex-col gap-2 text-sm">
 								<div class="flex justify-between">
-									<span>Version</span>
+									<span>Versión</span>
 									<span class="font-mono">{appVersion}</span>
 								</div>
 								<div class="flex justify-between">
-									<span>Environment</span>
+									<span>Entorno</span>
 									<span class="font-mono">{buildType}</span>
 								</div>
 								<div class="flex justify-between">
-									<span>Build Date</span>
+									<span>Fecha de Construcción</span>
 									<span class="font-mono">{buildDate}</span>
 								</div>
 								<div class="flex justify-between">
@@ -159,7 +159,7 @@
 	{#if showSaveToast}
 		<div class="toast toast-end toast-top">
 			<div class="alert alert-success">
-				<span>Settings saved successfully</span>
+				<span>Configuración guardada exitosamente</span>
 			</div>
 		</div>
 	{/if}

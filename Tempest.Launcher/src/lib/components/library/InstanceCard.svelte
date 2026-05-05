@@ -57,12 +57,12 @@
 					{/if}
 					{#if queueItem?.progress}
 						<span class="text-accent">
-							Downloading... {Math.round(
+							Descargando... {Math.round(
 								queueItem.progress.bytesPerSecond / 1024 / 1024,
 							)} MB/s
 						</span>
 					{:else}
-						<span class="text-accent">Downloading...</span>
+						<span class="text-accent">Descargando...</span>
 					{/if}
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 						</span>
 					{/if}
 					{#if isSettingUp}
-						<span class="text-accent">Setting up...</span>
+						<span class="text-accent">Configurando...</span>
 					{/if}
 				</div>
 			</div>

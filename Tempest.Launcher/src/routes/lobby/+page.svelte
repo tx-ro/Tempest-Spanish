@@ -175,7 +175,7 @@
 					{#snippet actions()}
 						<button class="btn btn-error" onclick={handleLeave}>
 							<LogOut size={18} />
-							Leave Lobby
+							Salir del Lobby
 						</button>
 					{/snippet}
 					{#snippet subtitle()}
@@ -193,38 +193,38 @@
 			</div>
 		</div>
 	{:else}
-		<Header title={$isInGame ? "Game in Progress" : "Lobby"}>
+		<Header title={$isInGame ? "Juego en curso" : "Lobby"}>
 			{#snippet icon()}
 				<Users size={32} class="opacity-60" />
 			{/snippet}
 			{#snippet actions()}
 				{#if !gameRunning && !launchGameMutation.isPending && $isGameServerOpen && currentInstance}
-					<button class="btn btn-accent" onclick={handleRejoin}>Rejoin Game</button>
+					<button class="btn btn-accent" onclick={handleRejoin}>Volver a entrar</button>
 				{/if}
-				<button class="btn btn-error" onclick={handleLeave}> Leave Lobby </button>
+				<button class="btn btn-error" onclick={handleLeave}> Salir del Lobby </button>
 			{/snippet}
 			{#snippet subtitle()}
 				{#if $isWaiting}
 					<span>
-						Waiting for players {$players.length}/{$lobbyState.waiting?.minPlayers}
+						Esperando por jugadores {$players.length}/{$lobbyState.waiting?.minPlayers}
 					</span>
 				{:else if $connectionStatus === "pending"}
 					<span class="inline-flex items-center gap-2">
 						<span class="loading loading-spinner loading-xs"></span>
-						Connecting
+						Conectando
 					</span>
 				{:else if !$isGameServerOpen}
 					<span class="inline-flex items-center gap-2">
 						<span class="loading loading-spinner loading-xs"></span>
-						Waiting for server to start
+						Esperando a que el servidor inicie
 					</span>
 				{:else if launchGameMutation.isPending}
 					<span class="inline-flex items-center gap-2">
 						<span class="loading loading-spinner loading-xs"></span>
-						Launching Paladins
+						Lanzando Paladins
 					</span>
 				{:else}
-					<span>{$players.length} players</span>
+					<span>{$players.length} jugadores</span>
 				{/if}
 			{/snippet}
 		</Header>
@@ -255,7 +255,7 @@
 							/>
 							<div class="min-w-0">
 								<p class="font-semibold truncate">{player.displayName}</p>
-								<p class="text-sm opacity-70">{player.champion || "Not ready"}</p>
+								<p class="text-sm opacity-70">{player.champion || "No listo"}</p>
 							</div>
 						</div>
 					{/each}
@@ -274,7 +274,7 @@
 							/>
 							<div class="min-w-0">
 								<p class="font-semibold truncate">{player.displayName}</p>
-								<p class="text-sm opacity-70">{player.champion || "Not ready"}</p>
+								<p class="text-sm opacity-70">{player.champion || "No listo"}</p>
 							</div>
 						</div>
 					{/each}
@@ -290,12 +290,12 @@
 			<div class="px-3 py-2 border-b border-base-300 flex items-center justify-between">
 				<div class="flex items-center gap-2">
 					<MessageCircle size={16} />
-					<span class="font-semibold text-sm">Team Chat</span>
+					<span class="font-semibold text-sm">Chat del equipo</span>
 				</div>
 				<button
 					class="btn btn-ghost btn-sm btn-square"
 					onclick={() => (chatOpen = false)}
-					aria-label="Close chat"
+					aria-label="Cerrar chat"
 				>
 					<X size={14} />
 				</button>
@@ -303,7 +303,7 @@
 
 			<div class="flex-1 overflow-y-auto p-3 min-h-0" bind:this={chatContainer}>
 				{#if $chatMessages.length === 0}
-					<p class="text-sm opacity-50 text-center py-2">No messages yet</p>
+					<p class="text-sm opacity-50 text-center py-2">Aún no hay mensajes</p>
 				{:else}
 					<div class="flex flex-col gap-1.5">
 						{#each $chatMessages as msg (msg.sentAt)}
@@ -321,7 +321,7 @@
 					type="text"
 					class="input input-bordered input-sm w-full"
 					disabled={$connectionStatus !== "connected"}
-					placeholder="Type a message..."
+					placeholder="Escribe un mensaje..."
 					maxlength={100}
 					autocomplete="off"
 					bind:value={chatboxText}
@@ -352,16 +352,16 @@
 			<div class="modal-box flex flex-col items-center gap-4 opacity-100 pointer-events-auto">
 				<p class="font-semibold text-lg">
 					{#if $connectionStatus === "disconnected"}
-						Connection Lost
+						Conexión perdida
 					{:else}
-						Gameserver crashed
+						Gameserver colapsado
 					{/if}
 				</p>
 				<p class="text-sm opacity-70 text-center">
 					{#if $connectionStatus === "disconnected"}
-						Unable to connect to the lobby server. Reconnecting...
+						No se puede conectar al servidor del lobby. Reconectando...
 					{:else}
-						Lobby is restarting...
+						El lobby está reiniciando...
 					{/if}
 				</p>
 				<span class="loading loading-spinner loading-md"></span>

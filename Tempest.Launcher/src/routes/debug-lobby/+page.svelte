@@ -289,20 +289,20 @@ Makes it possible to add players, vote maps and select champions
 
 <div class="flex flex-col h-full bg-base-100 p-6">
 	<div class="flex gap-3 items-center">
-		<button onclick={createNewPlayer} class="btn">New player</button>
+		<button onclick={createNewPlayer} class="btn">Nuevo jugador</button>
 		<p>State {JSON.stringify($stateStore)}</p>
 	</div>
 	<table class="table table-zebra">
 		<thead>
 			<tr>
-				<th>Name</th>
+				<th>Nombre</th>
 				<th>Id</th>
-				<th>Team</th>
-				<th>Champ</th>
-				<th>Vote map</th>
-				<th>Send champ</th>
-				<th>Send msg</th>
-				<th>Leave</th>
+				<th>Equipo</th>
+				<th>Campeón</th>
+				<th>Votar mapa</th>
+				<th>Enviar campeón</th>
+				<th>Enviar mensaje</th>
+				<th>Salir</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -321,7 +321,7 @@ Makes it possible to add players, vote maps and select champions
 										player.id,
 									)}
 							>
-								<option value="">Select map...</option>
+								<option value="">Seleccionar mapa...</option>
 								{#each maps as map (map.id)}
 									<option value={map.id} label={map.displayName}></option>
 								{/each}
@@ -337,7 +337,7 @@ Makes it possible to add players, vote maps and select champions
 										player.id,
 									)}
 							>
-								<option value="">Select champion...</option>
+								<option value="">Seleccionar campeón...</option>
 								{#each champions as champion (champion)}
 									<option value={champion} label={champion}></option>
 								{/each}
@@ -360,7 +360,7 @@ Makes it possible to add players, vote maps and select champions
 					</td>
 					<td>
 						{#if $debugPlayersStore.has(player.id)}
-							<button class="btn" onclick={() => handleLeave(player.id)}>Leave</button
+							<button class="btn" onclick={() => handleLeave(player.id)}>Salir</button
 							>
 						{/if}
 					</td>

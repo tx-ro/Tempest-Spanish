@@ -75,7 +75,7 @@
 	<div class="space-y-4">
 		<div class="form-control">
 			<label for="server-name" class="label py-0.5">
-				<span class="label-text text-sm">Server name</span>
+				<span class="label-text text-sm">Nombre del servidor</span>
 			</label>
 			<input
 				id="server-name"
@@ -89,14 +89,14 @@
 		</div>
 		<div class="form-control">
 			<label for="instance" class="label py-0.5">
-				<span class="label-text text-sm">Instance</span>
+				<span class="label-text text-sm">Instancia</span>
 			</label>
 			<select
 				id="instance"
 				class="select select-bordered w-full"
 				bind:value={selectedInstanceId}
 			>
-				<option value="" disabled>Select an instance...</option>
+				<option value="" disabled>Selecciona una instancia...</option>
 				{#each instanceList as instance (instance.id)}
 					<option
 						value={instance.id}
@@ -107,7 +107,7 @@
 		</div>
 		<div class="form-control">
 			<label for="gamemode" class="label py-0.5">
-				<span class="label-text text-sm">Gamemode</span>
+				<span class="label-text text-sm">Modo de Juego</span>
 			</label>
 			<select
 				id="gamemode"
@@ -120,19 +120,19 @@
 				<option value="onslaught" label="Onslaught"></option>
 			</select>
 		</div>
-		<span class="label-text text-sm label">Public servers are visible on the server list</span>
+		<span class="label-text text-sm label">Los servidores públicos son visibles en la lista de servidores</span>
 		<div class="form-control flex items-center justify-between">
 			<label for="public" class="label">
-				<span class="label-text text-sm">Public</span>
+				<span class="label-text text-sm">Publico</span>
 			</label>
 			<input id="public" class="toggle" type="checkbox" bind:checked={selectedPublic} />
 			<label for="password" class="label">
-				<span class="label-text text-sm">Password</span>
+				<span class="label-text text-sm">Contraseña</span>
 			</label>
 			<input
 				id="password"
 				type="text"
-				placeholder="Leave empty for no password"
+				placeholder="Deja en blanco para sin contraseña"
 				maxlength="60"
 				class="input input-bordered"
 				bind:value={selectedPassword}
@@ -140,8 +140,8 @@
 		</div>
 		<div class="form-control">
 			<label for="server-tags" class="label py-0.5">
-				<span class="label-text text-sm">Tags separated with commas</span>
-				<span class="label-text-alt text-xs">Optional</span>
+				<span class="label-text text-sm">Tags separados por comas</span>
+				<span class="label-text-alt text-xs">Opcional</span>
 			</label>
 			<input
 				id="server-tags"
@@ -153,7 +153,7 @@
 		</div>
 		<div class="form-control">
 			<label for="server-max-players" class="label py-0.5">
-				<span class="label-text text-sm">Max players</span>
+				<span class="label-text text-sm">Jugadores máximos</span>
 			</label>
 			<input
 				id="server-max-players"
@@ -162,13 +162,13 @@
 				required
 				min="1"
 				max="30"
-				placeholder="Number between 1-30"
+				placeholder="Número entre 1 y 30"
 				bind:value={selectedMaxPlayers}
 			/>
 		</div>
 		<div class="form-control">
 			<label for="server-min-players" class="label py-0.5">
-				<span class="label-text text-sm">Min players to start</span>
+				<span class="label-text text-sm">Jugadores mínimos para comenzar</span>
 			</label>
 			<input
 				id="server-min-players"
@@ -177,13 +177,13 @@
 				required
 				min="0"
 				max="30"
-				placeholder="Number between 0-30"
+				placeholder="Número entre 0 y 30"
 				bind:value={selectedMinPlayers}
 			/>
 		</div>
 		<div class="form-control">
 			<label for="server-max-spectators" class="label py-0.5">
-				<span class="label-text text-sm">Max spectators</span>
+				<span class="label-text text-sm">Espectadores máximos</span>
 			</label>
 			<input
 				id="server-max-spectators"
@@ -192,13 +192,13 @@
 				required
 				min="1"
 				max="30"
-				placeholder="Number between 1-30"
+				placeholder="Número entre 1 y 30"
 				bind:value={selectedMaxSpectators}
 			/>
 		</div>
 		<div class="form-control">
 			<label for="server-port" class="label py-0.5">
-				<span class="label-text text-sm">Port</span>
+				<span class="label-text text-sm">Puerto</span>
 			</label>
 			<input
 				id="server-port"
@@ -207,7 +207,7 @@
 				required
 				min="50000"
 				max="65000"
-				placeholder="Port between 50000-65000"
+				placeholder="Puerto entre 50000-65000"
 				bind:value={selectedPort}
 			/>
 		</div>
@@ -216,9 +216,9 @@
 	{#snippet actions()}
 		<div class="flex items-center justify-end w-full">
 			<div class="flex gap-2">
-				<button class="btn btn-ghost" onclick={() => (open = false)}>Cancel</button>
+				<button class="btn btn-ghost" onclick={() => (open = false)}>Cancelar</button>
 				<button class="btn btn-accent" disabled={!valid} onclick={handleCreate}>
-					Create
+					Crear
 				</button>
 			</div>
 		</div>

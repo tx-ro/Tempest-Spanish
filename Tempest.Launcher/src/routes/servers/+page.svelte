@@ -48,7 +48,7 @@
 		if (error instanceof Error && error.message) {
 			return error.message;
 		}
-		return "Error while fetching the server list.";
+		return "Hubo un error obteniendo la lista de servidores.";
 	}
 
 	function refreshServers() {
@@ -58,18 +58,18 @@
 </script>
 
 <svelte:head>
-	<title>Server list</title>
+	<title>Lista de Servidores</title>
 </svelte:head>
 
 <div class="flex flex-col h-full bg-base-100">
-	<Header title="Server List">
+	<Header title="Lista de Servidores">
 		{#snippet icon()}
 			<Server size={32} class="opacity-60" />
 		{/snippet}
 		{#snippet actions()}
 			<label class="input input-bordered">
 				<Search size={16} class="opacity-50" />
-				<input type="text" placeholder="Search" class="grow" bind:value={searchQuery} />
+				<input type="text" placeholder="Buscar" class="grow" bind:value={searchQuery} />
 			</label>
 			<button
 				class="btn btn-accent"
@@ -77,12 +77,12 @@
 					hostServerWizardOpen.set(true);
 				}}
 			>
-				Host server
+				Alojar servidor
 			</button>
 			<button
 				class="btn btn-ghost btn-square"
 				onclick={refreshServers}
-				aria-label="Refresh servers"
+				aria-label="Refrescar servidores"
 			>
 				<RefreshCw size={16} />
 			</button>
@@ -92,7 +92,7 @@
 			{#if isFetching}
 				<span class="inline-flex items-center gap-2">
 					<span class="loading loading-spinner loading-xs"></span>
-					Refreshing
+					Refrescando
 				</span>
 			{/if}
 		{/snippet}
@@ -104,7 +104,7 @@
 				{#if isLoading}
 					<div role="alert" class="alert alert-info">
 						<span class="loading loading-spinner loading-sm"></span>
-						<span>Loading servers…</span>
+						<span>Cargando servidores…</span>
 					</div>
 				{:else if error}
 					<div role="alert" class="alert alert-error">
@@ -113,27 +113,27 @@
 					</div>
 				{:else if servers.length === 0}
 					<div role="alert" class="alert alert-info">
-						<span>No servers available.</span>
+						<span>No hay servidores disponibles.</span>
 					</div>
 				{:else if filteredServers.length === 0}
 					<div role="alert" class="alert alert-info">
-						<span>No servers matching search.</span>
+						<span>No hay servidores que coincidan con la búsqueda.</span>
 					</div>
 				{:else}
 					<div class="overflow-x-auto">
 						<table class="table table-zebra">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Gamemode</th>
-									<th>Map</th>
-									<th>Players</th>
+									<th>Nombre</th>
+									<th>Modo de Juego</th>
+									<th>Mapa</th>
+									<th> jugadores</th>
 									<th>Bots</th>
-									<th>Spectators</th>
+									<th>Espectadores</th>
 									<th>Version</th>
-									<th>Password</th>
+									<th>Contraseña</th>
 									<th>Tags</th>
-									<th>Country</th>
+									<th>País</th>
 								</tr>
 							</thead>
 							<tbody>

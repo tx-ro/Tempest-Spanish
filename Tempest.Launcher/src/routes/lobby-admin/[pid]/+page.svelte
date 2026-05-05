@@ -52,14 +52,14 @@
 		{/snippet}
 		{#snippet subtitle()}
 			{#if hasError}
-				Encountered an error
+				Se encontró un error
 			{:else if !isRunning}
-				Stopped
+				Detenido
 			{/if}
 		{/snippet}
 		{#snippet actions()}
 			{#if isRunning}
-				<button class="btn text-sm btn-accent" onclick={join}> Join </button>
+				<button class="btn text-sm btn-accent" onclick={join}> Unirse </button>
 			{/if}
 
 			<button
@@ -70,12 +70,12 @@
 			>
 				{#if isKilling}
 					<span class="loading loading-spinner loading-xs"></span>
-					Stopping
+					Deteniendo
 				{:else if isRunning}
 					<Square size={16} />
-					Stop
+					Detener
 				{:else if !isRunning}
-					Close
+					Cerrar
 				{/if}
 			</button>
 		{/snippet}

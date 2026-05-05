@@ -6,8 +6,8 @@
 
 	// Mock announcement data
 	const announcement = {
-		title: "Announcement",
-		message: "Tempest Launcher is still in development so expect bugs.",
+		title: "Anuncio",
+		message: "Tempest Launcher sigue en desarrollo, aún pueden haber bugs.",
 	};
 
 	// Check if the last launched instance is currently running
@@ -72,7 +72,7 @@
 				disabled={isLaunching || isKilling}
 				aria-busy={isLaunching || isKilling}
 				onclick={handleLaunchToggle}
-				aria-label={isRunning ? "Stop game" : "Launch game"}
+				aria-label={isRunning ? "Detener juego" : "Lanzar juego"}
 			>
 				{#if isLaunching}
 					<span class="loading loading-spinner loading-xs"></span>
@@ -85,10 +85,10 @@
 				{/if}
 				<div class="flex flex-col items-start">
 					<span class="font-semibold text-sm">
-						{isLaunching ? "Launching..."
-						: isKilling ? "Stopping..."
-						: isRunning ? "Stop Game"
-						: "Run Game"}
+						{isLaunching ? "Iniciando..."
+						: isKilling ? "Deteniendo..."
+						: isRunning ? "Detener Juego"
+						: "Iniciar Juego"}
 					</span>
 					<span class="text-xs opacity-80">{$lastLaunchedInstance.label}</span>
 				</div>
@@ -102,7 +102,7 @@
 			<div class="pt-2">
 				<div class="alert alert-error">
 					<span>{actionError}</span>
-					<button class="btn btn-ghost btn-sm" onclick={clearActionError}>Dismiss</button>
+					<button class="btn btn-ghost btn-sm" onclick={clearActionError}>Descartar</button>
 				</div>
 			</div>
 		{/if}

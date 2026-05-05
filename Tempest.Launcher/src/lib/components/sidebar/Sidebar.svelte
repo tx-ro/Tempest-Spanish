@@ -21,10 +21,10 @@
 
 <aside class="flex h-screen w-16 flex-none flex-col items-center bg-base-300 py-4">
 	<nav class="flex flex-col gap-2">
-		<SidebarItem href="/" icon={House} label="Home" />
-		<SidebarItem href="/library" icon={Library} label="Library" />
-		<SidebarItem href="/downloads" icon={Download} label="Downloads" />
-		<SidebarItem href="/servers" icon={Server} label="Servers" />
+		<SidebarItem href="/" icon={House} label="Inicio" />
+		<SidebarItem href="/library" icon={Library} label="Librería" />
+		<SidebarItem href="/downloads" icon={Download} label="Descargas" />
+		<SidebarItem href="/servers" icon={Server} label="Servidores" />
 		{#if $lobbyHost}
 			<SidebarItem href="/lobby" icon={Compass} label="Lobby" />
 		{/if}
@@ -63,6 +63,6 @@
 	<div class="divider mx-4 my-4 opacity-50"></div>
 
 	<div class="mt-auto flex flex-col gap-2">
-		<SidebarItem href="/settings" icon={Settings} label="Settings" />
+		<SidebarItem href="/settings" icon={Settings} label="Preferencias" />
 	</div>
 </aside>

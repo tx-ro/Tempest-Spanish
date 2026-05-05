@@ -235,7 +235,7 @@
 					<div class="alert alert-error">
 						<span>{killError}</span>
 						<button class="btn btn-ghost btn-sm" onclick={clearKillError}>
-							Dismiss
+							Descartar
 						</button>
 					</div>
 				</div>
@@ -251,9 +251,9 @@
 					{#if mods.length === 0}
 						<div class="flex flex-col items-center justify-center h-64 gap-4">
 							<PackageOpen size={48} class="opacity-30" />
-							<p class="text-lg text-base-content/50">No content installed</p>
+							<p class="text-lg text-base-content/50">No hay contenido instalado</p>
 							<p class="text-sm text-base-content/40">
-								Add mods to customize your instance
+								Agrega mods para customizar tu instancia
 							</p>
 						</div>
 					{:else}
@@ -264,14 +264,14 @@
 										<button
 											class="flex items-center gap-1 font-semibold text-sm"
 										>
-											<span>Name</span>
+											<span>Nombre</span>
 										</button>
 									</th>
-									<th class="w-48">Version</th>
+									<th class="w-48">Versión</th>
 									<th class="w-auto text-right">
 										<button class="btn btn-ghost btn-sm">
 											<RefreshCw size={14} />
-											Refresh
+											Recargar
 										</button>
 									</th>
 								</tr>
@@ -291,7 +291,7 @@
 														{mod.name}
 													</h3>
 													<p class="text-xs opacity-70">
-														by {mod.author}
+														por {mod.author}
 													</p>
 												</div>
 											</div>
@@ -324,12 +324,12 @@
 	<div class="space-y-4">
 		<div class="form-control">
 			<label for="instance-name" class="label py-0.5">
-				<span class="label-text text-sm">Instance Name</span>
+				<span class="label-text text-sm">Nombre de la instancia</span>
 			</label>
 			<input
 				id="instance-name"
 				type="text"
-				placeholder="Instance Name"
+				placeholder="Nombre de la instancia"
 				class="input input-bordered w-full"
 				bind:value={editName}
 			/>
@@ -337,7 +337,7 @@
 
 		<div class="form-control">
 			<label for="instance-version" class="label py-0.5">
-				<span class="label-text text-sm">Game Version</span>
+				<span class="label-text text-sm">Versión del juego</span>
 			</label>
 			<input
 				id="instance-version"
@@ -350,7 +350,7 @@
 
 		<div class="form-control">
 			<label for="instance-path" class="label py-0.5">
-				<span class="label-text text-sm">Installation Path</span>
+				<span class="label-text text-sm">Ruta de instalación</span>
 			</label>
 			<div class="join w-full">
 				<input
@@ -369,7 +369,7 @@
 
 		<div class="form-control">
 			<label for="instance-args" class="label py-0.5">
-				<span class="label-text text-sm">Launch Arguments</span>
+				<span class="label-text text-sm">Argumentos de inicio</span>
 			</label>
 			<div class="space-y-2">
 				<div class="join w-full">
@@ -382,7 +382,7 @@
 						onkeydown={handleArgsKeydown}
 					/>
 					<button class="btn btn-accent join-item" onclick={addArgs} type="button">
-						Add
+						Agregar
 					</button>
 				</div>
 				{#if editArgs.length > 0}
@@ -417,14 +417,14 @@
 						{/each}
 					</div>
 				{/if}
-				<p class="text-xs opacity-60">Space-separated arguments.</p>
+				<p class="text-xs opacity-60">Argumentos separados por espacios.</p>
 			</div>
 		</div>
 
 		{#if availablePlatforms.length > 1}
 			<div class="form-control">
 				<label for="instance-platform" class="label py-0.5">
-					<span class="label-text text-sm">Platform</span>
+					<span class="label-text text-sm">Plataforma</span>
 				</label>
 				<select
 					id="instance-platform"
@@ -445,7 +445,7 @@
 			<button class="btn btn-ghost" onclick={() => (isSettingsModalOpen = false)}>
 				Cancel
 			</button>
-			<button class="btn btn-accent" onclick={saveSettings}> Save Changes </button>
+			<button class="btn btn-accent" onclick={saveSettings}> Guardar cambios </button>
 		</div>
 	{/snippet}
 </Modal>

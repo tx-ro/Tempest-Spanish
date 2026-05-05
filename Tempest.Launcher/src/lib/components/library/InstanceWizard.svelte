@@ -60,7 +60,7 @@
 		const result = await openDialog({
 			directory: true,
 			multiple: false,
-			title: "Select Paladins Installation Folder",
+			title: "Selecciona la carpeta de instalación de Paladins",
 		});
 		if (result) {
 			selectedPath = result;
@@ -87,15 +87,15 @@
 					}
 					hasDetected = true;
 				} else {
-					detectionError = `Build identified as ${info.PatchName} (${info.VersionGroup}), but it's not in our database.`;
+					detectionError = `Versión identificada como ${info.PatchName} (${info.VersionGroup}), pero no está en nuestra base de datos.`;
 					hasDetected = true;
 				}
 			} else {
-				detectionError = "Could not identify build in this folder.";
+				detectionError = "No se pudo identificar la versión en esta carpeta.";
 			}
 		} catch (error) {
-			console.error("Detection error:", error);
-			detectionError = "An error occurred during build identification.";
+			console.error("Error de detección:", error);
+			detectionError = "Ocurrió un error durante la identificación de la versión.";
 		}
 	}
 
@@ -112,7 +112,7 @@
 		try {
 			await setupInstanceMutation.mutateAsync(instance);
 		} catch (error) {
-			console.error("Instance setup failed:", error);
+			console.error("Error en el setup de la instancia:", error);
 		} finally {
 			updateInstance(instance.id, { state: { type: "prepared" } });
 		}
@@ -165,7 +165,7 @@
 				selectedName ||
 				selectedVersion?.name ||
 				selectedVersion?.version ||
-				"Paladins Instance",
+				"Instancia de Paladins",
 			version: selectedVersion?.version,
 			path: instancePath,
 			launchOptions: {
@@ -222,7 +222,7 @@
 			await navigator.clipboard.writeText(depotDownloaderCommand);
 			copyStatus = "copied";
 		} catch (error) {
-			console.error("Failed to copy command:", error);
+			console.error("Hubo un error copiando el comando:", error);
 			copyStatus = "failed";
 		}
 		setTimeout(() => {
@@ -231,7 +231,7 @@
 	}
 </script>
 
-<Modal bind:open title="Create New Instance" class="max-w-2xl">
+<Modal bind:open title="Crear Instancia Nueva" class="max-w-2xl">
 	<div role="tablist" class="tabs tabs-border w-full mb-4">
 		<button
 			role="tab"
@@ -239,7 +239,7 @@
 			onclick={() => (selectedTab = "download")}
 		>
 			<CloudDownload size={16} />
-			<span>Download</span>
+			<span>Descarga</span>
 		</button>
 		<button
 			role="tab"
@@ -247,7 +247,7 @@
 			onclick={() => (selectedTab = "folder")}
 		>
 			<Folder size={16} />
-			<span>Import Existing</span>
+			<span>Importar Existente</span>
 		</button>
 	</div>
 
@@ -257,17 +257,17 @@
 				{#if selectedTab === "download"}
 					<CloudDownload size={16} class="mt-0.5 shrink-0" />
 					<div>
-						<h4 class="font-semibold text-sm">Download a game version</h4>
+						<h4 class="font-semibold text-sm">Descargar una versión del juego</h4>
 						<p class="text-xs opacity-80">
-							Select a Paladins version to download and install automatically
+							Selecciona una versión de Paladins para descargar e instalar automáticamente
 						</p>
 					</div>
 				{:else}
 					<Folder size={16} class="mt-0.5 shrink-0" />
 					<div>
-						<h4 class="font-semibold text-sm">Import from existing installation</h4>
+						<h4 class="font-semibold text-sm">Importar desde instalación existente</h4>
 						<p class="text-xs opacity-80">
-							Point to an existing Paladins installation folder
+							Apunta a una carpeta de instalación de Paladins existente
 						</p>
 					</div>
 				{/if}
@@ -278,14 +278,14 @@
 			{#if selectedTab === "download" || (selectedTab === "folder" && hasDetected)}
 				<div class="form-control">
 					<label for="game-version" class="label py-0.5">
-						<span class="label-text text-sm">Game Version</span>
+						<span class="label-text text-sm">Versión del Juego</span>
 					</label>
 					<select
 						id="game-version"
 						class="select select-bordered w-full"
 						bind:value={selectedVersionId}
 					>
-						<option value="" disabled>Select a version...</option>
+						<option value="" disabled>Selecciona una versión...</option>
 						{#each versionOptions as version (version.value)}
 							<option value={version.value}>{version.label}</option>
 						{/each}
@@ -314,7 +314,7 @@
 			{#if selectedTab === "folder"}
 				<div class="form-control">
 					<label for="folder-path" class="label py-0.5">
-						<span class="label-text text-sm">Installation Path</span>
+						<span class="label-text text-sm">Dirección de Instalación</span>
 					</label>
 					<div class="join w-full">
 						<input
@@ -326,7 +326,7 @@
 						/>
 						<button class="btn btn-accent join-item" onclick={handleBrowse}>
 							<Folder size={16} />
-							Browse
+							Buscar
 						</button>
 					</div>
 					{#if detectionError}
@@ -341,32 +341,32 @@
 			{/if}
 
 			{#if showAdvanced}
-				<div class="divider my-2 text-xs">Advanced Options</div>
+				<div class="divider my-2 text-xs">Opciones Avanzadas</div>
 
 				<div class="form-control">
 					<label for="instance-name" class="label py-0.5">
-						<span class="label-text text-sm">Instance Name</span>
-						<span class="label-text-alt text-xs">Optional</span>
+						<span class="label-text text-sm">Nombre de la Instancia</span>
+						<span class="label-text-alt text-xs">Opcional</span>
 					</label>
 					<input
 						id="instance-name"
 						type="text"
 						placeholder={selectedVersion?.name ||
 							selectedVersion?.version ||
-							"My Custom Instance"}
+							"Mi Instancia de Paladins"}
 						class="input input-bordered w-full"
 						bind:value={selectedName}
 					/>
 					<div class="label py-0.5">
-						<span class="label-text-alt text-xs">Leave empty to use version name</span>
+						<span class="label-text-alt text-xs">Dejar en blanco para usar el nombre de la versión</span>
 					</div>
 				</div>
 
 				{#if selectedTab === "download"}
 					<div class="form-control">
 						<label for="download-path" class="label py-0.5">
-							<span class="label-text text-sm">Installation Path</span>
-							<span class="label-text-alt text-xs">Optional</span>
+							<span class="label-text text-sm">Dirección de Instalación</span>
+							<span class="label-text-alt text-xs">Opcional</span>
 						</label>
 						<div class="join w-full">
 							<input
@@ -378,11 +378,11 @@
 							/>
 							<button class="btn btn-accent join-item" onclick={handleBrowse}>
 								<Folder size={16} />
-								Browse
+								Buscar
 							</button>
 						</div>
 						<div class="label py-0.5">
-							<span class="label-text-alt text-xs">Defaults to instances folder</span>
+							<span class="label-text-alt text-xs">Por defecto a la carpeta de instancias</span>
 						</div>
 					</div>
 				{/if}
@@ -394,10 +394,10 @@
 		<div class="flex items-center justify-between w-full">
 			<button class="btn btn-ghost" onclick={() => (showAdvanced = !showAdvanced)}>
 				<Code size={16} />
-				{showAdvanced ? "Hide Advanced" : "Advanced Options"}
+				{showAdvanced ? "Esconder Opciones Avanzadas" : "Opciones Avanzadas"}
 			</button>
 			<div class="flex gap-2">
-				<button class="btn btn-ghost" onclick={() => (open = false)}>Cancel</button>
+				<button class="btn btn-ghost" onclick={() => (open = false)}>Cancelar</button>
 				<button
 					class="btn btn-accent"
 					disabled={!isValid ||
@@ -407,13 +407,13 @@
 				>
 					{#if selectedTab === "download"}
 						<CloudDownload size={16} />
-						{supportsCloudDownload ? "Download & Create" : "Not Available"}
+						{supportsCloudDownload ? "Descargar y Crear" : "No Disponible"}
 					{:else if isDetecting}
 						<Loader2 size={16} class="animate-spin" />
-						Identifying...
+						Identificando...
 					{:else}
 						<Folder size={16} />
-						Import Instance
+						Importar Instancia
 					{/if}
 				</button>
 			</div>

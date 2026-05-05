@@ -53,7 +53,7 @@
 </script>
 
 <div class="flex flex-col h-full bg-base-100">
-	<Header title="Downloads">
+	<Header title="Descargas">
 		{#snippet icon()}
 			<Download size={32} class="opacity-60" />
 		{/snippet}
@@ -61,7 +61,7 @@
 			{#if $queueRunning}
 				<button class="btn btn-ghost" onclick={handlePause}>
 					<Pause size={16} />
-					Pause
+					Pausar
 				</button>
 			{:else}
 				<button
@@ -70,7 +70,7 @@
 					disabled={$queuePendingCount === 0}
 				>
 					<Play size={16} />
-					Start
+					Iniciar
 				</button>
 			{/if}
 			<button
@@ -79,21 +79,21 @@
 				disabled={$queueCompletedCount === 0 && $queueErrorCount === 0}
 			>
 				<Trash2 size={16} />
-				Clear Completed
+				Se limpió correctamente
 			</button>
 		{/snippet}
 		{#snippet subtitle()}
 			{#if $queuePendingCount > 0}
-				<span class="badge badge-accent badge-sm">{$queuePendingCount} pending</span>
+				<span class="badge badge-accent badge-sm">{$queuePendingCount} en curso</span>
 			{/if}
 			{#if $queueCompletedCount > 0}
-				<span class="badge badge-success badge-sm">{$queueCompletedCount} complete</span>
+				<span class="badge badge-success badge-sm">{$queueCompletedCount} completada</span>
 			{/if}
 			{#if $queueErrorCount > 0}
-				<span class="badge badge-error badge-sm">{$queueErrorCount} failed</span>
+				<span class="badge badge-error badge-sm">{$queueErrorCount} fallido</span>
 			{/if}
 			{#if $queueItems.length === 0}
-				<span>No downloads</span>
+				<span>Sin descargas</span>
 			{/if}
 		{/snippet}
 	</Header>
@@ -103,9 +103,9 @@
 				{#if $queueItems.length === 0}
 					<div class="flex flex-col items-center justify-center h-64 gap-4">
 						<FolderOpen size={48} class="opacity-30" />
-						<p class="text-lg text-base-content/50">No downloads in queue</p>
+						<p class="text-lg text-base-content/50">Sin descargas en la cola</p>
 						<p class="text-sm text-base-content/40">
-							Add restore operations from the library
+							Agregar operaciones de restauración desde la biblioteca
 						</p>
 					</div>
 				{:else}
@@ -143,7 +143,7 @@
 													>
 													<span class="opacity-70">
 														{progress.completedFiles}/{progress.totalFiles}
-														files
+														archivos
 													</span>
 												</div>
 												<progress
@@ -166,12 +166,12 @@
 													</span>
 													{#if progress.etaSeconds > 0}
 														<span
-															>ETA: {formatTime(
+															>Tiempo Estimado: {formatTime(
 																progress.etaSeconds,
 															)}</span
 														>
 													{:else}
-														<span>Calculating...</span>
+														<span>Calculando...</span>
 													{/if}
 												</div>
 											</div>
@@ -179,27 +179,27 @@
 											<div class="text-sm space-y-1">
 												<div class="flex items-center gap-4">
 													<span class="text-success font-semibold"
-														>{item.result.files} files</span
+														>{item.result.files} archivos</span
 													>
 													<span class="opacity-70"
-														>{formatBytes(item.result.diskWriteBytes)} written</span
+														>{formatBytes(item.result.diskWriteBytes)} escritos</span
 													>
 												</div>
 												{#if item.result.repairedFiles > 0}
 													<span class="text-warning text-xs"
-														>{item.result.repairedFiles} repaired</span
+														>{item.result.repairedFiles} reparados</span
 													>
 												{/if}
 												{#if item.result.verifiedFiles > 0}
 													<span class="text-xs opacity-60"
-														>{item.result.verifiedFiles} verified</span
+														>{item.result.verifiedFiles} verificados</span
 													>
 												{/if}
 											</div>
 										{:else if item.status === "error" && item.error}
 											<p class="text-sm text-error">{item.error}</p>
 										{:else if item.status === "pending"}
-											<p class="text-sm opacity-50">Waiting in queue...</p>
+											<p class="text-sm opacity-50">Esperando en la cola...</p>
 										{/if}
 									</div>
 

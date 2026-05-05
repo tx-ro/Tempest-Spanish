@@ -50,7 +50,7 @@
 			try {
 				await remove(instance.path, { recursive: true });
 			} catch (error) {
-				console.error("Failed to delete instance data:", error);
+				console.error("Hubo un error eliminando los datos de la instancia.", error);
 			}
 		}
 
@@ -69,7 +69,7 @@
 		try {
 			await setupInstanceMutation.mutateAsync(targetInstance);
 		} catch (error) {
-			console.error("Instance setup failed:", error);
+			console.error("Hubo un error configurando la instancia.", error);
 		} finally {
 			updateInstance(targetInstance.id, {
 				state: { type: "prepared" } as unknown as Instance["state"],
@@ -106,22 +106,22 @@
 		{#if isReady}
 			<PopoverMenuItem onclick={handleRunSetup} disabled={isSettingUp}>
 				<RefreshCw size={16} />
-				Run Setup
+				Lanzar Setup
 			</PopoverMenuItem>
 			{#if canRestore}
 				<PopoverMenuItem onclick={handleRestore} disabled={isSettingUp}>
 					<RotateCcw size={16} />
-					Verify
+					Verificar
 				</PopoverMenuItem>
 			{/if}
 		{/if}
 		<PopoverMenuItem onclick={openFolder} disabled={!instance?.path}>
 			<FolderOpen size={16} />
-			Browse Folder
+			Navegar Carpeta
 		</PopoverMenuItem>
 		<PopoverMenuItem onclick={() => (showDeleteConfirm = true)} class="text-error">
 			<Trash2 size={16} />
-			Delete Instance
+			Eliminar Instancia
 		</PopoverMenuItem>
 	{/snippet}
 </PopoverMenu>
