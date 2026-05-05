@@ -4,7 +4,7 @@ Este proyecto es una versión traducida al Español (México) del launcher de Te
 
 Ninguna de las funcionalidades del launcher fueron modificadas.
 
-Es importante aclarar que este launcher **aún se encuentra en desarrollo y no está finalizado**. Se utilizó como base el launcher original de Kana, el cual no es open-source.
+Es importante aclarar que este launcher **aún se encuentra en desarrollo y no está finalizado**. Se utilizó como base el launcher original de Kana, el cual no es open-source. Algunas de las funcionalidades del launcher original **no están presentes en esta versión**.
 
 Si hay algún error de traducción el cual se me pasó por arriba o hay algo que no está traducido, puedes unirte al [servidor de Discord](https://discord.gg/FB9faSwHuB) y mencionarme allí.
 
